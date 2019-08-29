@@ -8,7 +8,8 @@ pipeline
             steps 
             {
                 echo "Checking out from Source Repository"
-                git url: 'https://github.com/pramodk05/java_maven_jenkins'
+                //git url: 'https://github.com/pramodk05/java_maven_jenkins'
+                git url: 'https://github.com/NainaSayed/java_maven_jenkins.git'
             }
         
         }
@@ -40,6 +41,8 @@ pipeline
             }
         
         }
+        
+
         stage('Package Stage') 
         {
             steps 
@@ -54,6 +57,40 @@ pipeline
             }
         
         }
+        stage ('Terraform Setup') 
+        {
+            steps 
+            {
+                script 
+                {
+                    def tfHome = tool name: 'Terraform_0.12.6', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
+                    
+                }              
+            sh 'terraform --version'                    
+                
+            }
+        }
+        stage ('Terraform Init and Plan') 
+        {
+            steps 
+            {
+                sh 'terraform init $WORKSPACE'
+                sh 'terraform plan'
+            }
+        }
+
+        stage ('Terraform Apply') 
+        {
+            steps 
+            {
+                sh 'terraform apply --auto-approve'               
+            }
+        }
+
+
+
+
+        /*      
         
         stage('Deploy Stage') 
         {
@@ -65,6 +102,8 @@ pipeline
             }
         
         }
+        
+        */
         
     }
     
