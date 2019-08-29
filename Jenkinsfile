@@ -74,7 +74,7 @@ pipeline
         {
             steps 
             {
-                sh 'terraform init $WORKSPACE'
+                sh 'terraform init'
                 sh 'terraform plan'
             }
         }
