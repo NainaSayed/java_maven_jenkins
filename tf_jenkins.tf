@@ -1,7 +1,7 @@
 # AWS Provider information
 provider "aws" {
     region = "${var.region}"
-    shared_credentials_file = "~/.aws/credentials"
+    shared_credentials_file = "/root/.aws/credentials"
 }
 # New VPC to host the subnets for AppServer
 resource "aws_vpc" "AppServer_vpc" {
