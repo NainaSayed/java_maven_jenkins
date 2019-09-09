@@ -1,11 +1,11 @@
 variable "region" {
-    default = "us-east-1"
+    default = "us-east-2"
 }
 variable "vpc_id" {
-    default = "vpc-8cf379f6"
+    default = "vpc-34eedd5c"
 }
 variable "subnet_id" {
-    default = "subnet-d0dc99fe"
+    default = "subnet-0d38c041"
 }
 
 variable "ports" {
