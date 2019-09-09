@@ -20,7 +20,7 @@ pipeline {
 
         stage('Test Stage') {
             steps {
-                withMaven(maven : 'maven_3.6') {
+                withMaven(maven : 'Maven_3.6') {
                     sh 'mvn test'
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
 
         stage('Create the Build artifacts Stage (Package)') {
             steps {
-                withMaven(maven : 'maven_3.6') {
+                withMaven(maven : 'Maven_3.6') {
                     sh 'mvn package'
                 }
             }
