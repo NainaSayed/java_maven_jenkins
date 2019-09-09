@@ -1,7 +1,7 @@
 # AWS Provider information
 provider "aws" {
     region = "${var.region}"
-    shared_credentials_file = "~/.aws/credentials"
+    shared_credentials_file = "/root/.aws/credentials"
 }
 
 resource "aws_security_group" "tomcat-security-group" {
