@@ -5,7 +5,7 @@ pipeline {
 
        stage('SCM Checkout') {
             steps {
-                git credentialsId: '8e237d54-cc07-4aad-a3fe-51855a4d84c1', url: 'https://github.com/pramodk05/java_maven_jenkins.git'
+                git url: 'https://github.com/NainaSayed/java_maven_jenkins.git'
             }
         }
 
@@ -76,11 +76,11 @@ pipeline {
                     terraform output -json tomcat_public_ip | cut -d '"' -f2 > tc_pub_ip.txt
                     terraform output -json tomcat_private_ip | cut -d '"' -f2 > tc_pri_ip.txt
                     sed -n '1p' < /opt/pup_setup_tf/ec2_private_dns.txt > pup_master_pri_dns.txt
-                    sed -n '1p' < /opt/pup_setup_tf/ec2_private_ip.txt > pup_master_pri_ip.txt                  
+                    sed -n '1p' < /opt/pup_setup_tf/ec2_private_ip.txt > pup_master_pri_ip.txt
                 """
             }
-        }    
-        
+        }
+
         stage ('Setting up puppet node on Tomcat server') {
             steps {
                 sh './tc_pup_agent_setup.sh'
@@ -89,4 +89,5 @@ pipeline {
 
     }
 }
+
 
