@@ -57,7 +57,7 @@ pipeline {
         }
         stage ('Terraform Init and Plan') {
             steps {
-                sh 'terraform init $WORKSPACE'
+                sh 'terraform init ${WORKSPACE}'
                 sh 'terraform plan'
             }
         }
